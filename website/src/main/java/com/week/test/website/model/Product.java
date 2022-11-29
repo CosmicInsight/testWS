@@ -1,10 +1,14 @@
 package com.week.test.website.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "product")
-public class Product  extends ParentEntity{
+public class Product {
 
     @Id
     @Column(name ="product_id")
@@ -16,6 +20,13 @@ public class Product  extends ParentEntity{
 
     @Column(name ="product_stock")
     private Integer productStock;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime creationTimestamp;
+
+    @UpdateTimestamp
+    private LocalDateTime updateTimestamp;
 
     public Integer getProductId() {
         return productId;

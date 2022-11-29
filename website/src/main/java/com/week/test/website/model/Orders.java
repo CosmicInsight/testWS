@@ -1,14 +1,15 @@
 package com.week.test.website.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "orders")
 
-public class Orders extends ParentEntity{
+public class Orders {
 
     @Id
     @Column(name = "order_id")
@@ -21,6 +22,13 @@ public class Orders extends ParentEntity{
     @ManyToOne
     @JoinColumn(name="product_id")
     private Product product;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime creationTimestamp;
+
+    @UpdateTimestamp
+    private LocalDateTime updateTimestamp;
 
     public Integer getOrderId() {
         return orderId;

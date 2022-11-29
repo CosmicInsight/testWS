@@ -1,11 +1,15 @@
 package com.week.test.website.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Table(name = "user")
 @Entity
 
-public class UserAccount  extends ParentEntity{
+public class UserAccount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +31,13 @@ public class UserAccount  extends ParentEntity{
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     Role role;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime creationTimestamp;
+
+    @UpdateTimestamp
+    private LocalDateTime updateTimestamp;
 
     public Integer getUserId() {
         return userId;
