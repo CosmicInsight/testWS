@@ -1,10 +1,10 @@
 package com.week.test.website.model;
 
 import javax.persistence.*;
-import java.util.List;
+
 @Entity
 @Table(name = "product")
-public class Product {
+public class Product  extends ParentEntity{
 
     @Id
     @Column(name ="product_id")

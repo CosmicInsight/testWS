@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Table(name = "user")
 @Entity
 
-public class UserAccount {
+public class UserAccount  extends ParentEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
